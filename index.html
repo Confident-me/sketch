@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sketch">
+<head>
+     <meta charset="UTF-8">
+	<title>angular-sketch</title>
+	<script type="text/javascript" src="./js/angular.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+<body ng-controller="sketchController">
+   <div class="kuangjia">
+      <div class="dingbu">
+         几何画板 - [sketch - 描点法]
+      </div>
+      <div class="wenjian">
+         <span>
+            <a href="">文件(F)</a>
+         </span>
+         <span>
+            <a href="">编辑(E)</a>
+         </span>
+         <span>
+            <a href="">显示(D)</a>
+         </span>
+         <span>
+            <a href="">构造(C)</a>
+         </span>
+         <span>
+            <a href="">变换(T)</a>
+         </span>
+         <span>
+            <a href="">度量(M)</a>
+         </span>
+         <span>
+            <a href="">数据(N)</a>
+         </span>
+         <span>
+            <a href="">绘图(G)</a>
+         </span>
+         <span>
+            <a href="">窗口(W)</a>
+         </span>
+         <span>
+            <a href="">帮助(H)</a>
+         </span>
+      </div>
+
+      <div class="zuo">
+       <ul>
+           <li class="yangshi" ng-repeat="(key, value) in tools" ng-click="settool(value)" ng-class="{active:value==tool}">
+              <span><img src="{{key}}" alt=""></span>
+           </li>
+        </ul>
+        <hr>
+        <div class="weizhi" ng-click="setStyle('fill')" ng-class="{active2:csState.style=='fill'}">填充</div>
+        <input class="weizhi2" ng-model="csState.fillStyle" type="color">
+        <div class="weizhi" ng-click="setStyle('stroke')" ng-class="{active2:csState.style=='stroke'}">画线</div>
+        <input class="weizhi2" ng-model="csState.strokeStyle"type="color">
+        <div class="weizhi">线宽</div>
+        <input class="weizhi2 xiankuan" ng-model="csState.lineWidth" type="range" min="1" max="30" step="1"></input>
+        <hr>
+        <div class="huabu">调整画布大小</div>
+         <!-- <span class="kuan">宽:</span> --><input ng-model="canvasWH.width" type="range" min="400" max="800" step="20" class="tiaokuan"></input><br/>
+         <!-- <span class="kuan">高:</span> --><input ng-model="canvasWH.height" type="range" min="400" max="480" step="20" class="tiaogao"></input>
+         <hr>
+         <span class="tiao" ng-click="newsketch()">新建</span>
+         <a class="tiao" ng-click="save($event)">保存</a>
+         <span class="tiao">回退</span>
+  </div>
+  
+  <div class="you">
+       <canvas id="canvas" width="{{canvasWH.width}}" height="{{canvasWH.height}}">
+          
+       </canvas>
+  </div>
+
+
+   </div>
+
+
+
+
+
+  
+</body>
+</html>
